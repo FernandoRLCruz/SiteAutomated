@@ -10,4 +10,7 @@ class HomePageLocators:
     loginButtonByClassName = "header_user_info"
     emailRegisterInputTextByID = "email_create"
     registerButtonByID = "SubmitCreate"
-
+    customerFirstNameInputTextByID = "customer_firstname"
+    customerLastNameInputTextByID = "customer_lastname"
+    genderMaleInputRadioByID = "id_gender1"
+    passwordInputRadioByID =

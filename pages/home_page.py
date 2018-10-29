@@ -20,6 +20,24 @@ class HomePage(BaseSetup, WebDriverCustomClass):
         self.is_element_clickable(By.ID, HomePageLocators.emailRegisterInputTextByID)
         self.click_on_element(By.ID, HomePageLocators.registerButtonByID)
 
+    def fillFormRegister(self):
+        self.is_element_clickable(By.ID, HomePageLocators.genderMaleInputRadioByID)
+        self.click_on_element(By.ID, HomePageLocators.genderMaleInputRadioByID)
+        self.fill_element(By.ID, HomePageLocators.customerFirstNameInputTextByID, info_user['firstName'])
+        self.fill_element(By.ID, HomePageLocators.customerLastNameInputTextByID, info_user['lastName'])
+        self.fill_element(self.password, info_user['password'])
+        assert info_user['firstName'] in self.fName.get_attribute('value')
+        assert info_user['lastName'] in self.lName.get_attribute('value')
+        fillelement(self.address, info_user['address'])
+        fillelement(self.city, info_user['city'])
+        selectOnCombo(self.state, info_user['state'])
+        fillelement(self.zipcode, info_user['zipcode'])
+        selectOnCombo(self.country, info_user['country'])
+        fillelement(self.phone, info_user['phone'])
+        fillelement(self.alias, info_user['email'])
+        self.submitAcc.click()
+
+
     def search_product(self, searched_product):
         self.send_keys_to(By.ID, HomePageLocators.searchFieldByID, searched_product)
 
