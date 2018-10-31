@@ -23,10 +23,14 @@ class HomePageLocators:
     aliasInputTextByID = "alias"
     submitRegisterButtonByID = "submitAccount"
     signInButtonByXpath = "//a[contains(text(),'Sign in')]"
-
     productNameLinkTextByXpath = "//a[contains(@class,'product-name')]"
     addCartButtonByID = "add_to_cart"
     checkoutButtonByXpath = "//span[contains(text(),'Proceed to checkout')]"
+    productTitleLabelByXpath = "//h1[contains(@itemprop,'name')]"
+    productQuantityLabelByID = "quantity_wanted"
+    productPriceLabelByID = "our_price_display"
+
+
     '''
     keepShopButtonByXpath = "//span[contains(@title,'Continue shopping')]"
     closeAdd = PageElement(xpath='//*[@id="center_column"]/p[2]/a[1]')

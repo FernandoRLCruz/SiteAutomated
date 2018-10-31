@@ -25,7 +25,7 @@ info_user_logged = {
     'state': 'Florida',
     'country': 'United States',
     }
-products = {
-    'itens': ['Printed Dress']
+products_list = {
+    'itens': ['Printed Dress', 'Faded Short Sleeve']
 }
 

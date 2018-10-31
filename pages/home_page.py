@@ -6,10 +6,13 @@ from selenium.webdriver.common.by import By
 from base.base_setup import BaseSetup
 from base.webdriver_custom_class import WebDriverCustomClass
 from page_model.home_page import HomePageLocators
-from utilities.data import info_user, products
+from utilities.data import info_user, products_list
+from utilities.product import Product
 
 
 class HomePage(BaseSetup, WebDriverCustomClass):
+    product = Product
+    product_dict = dict()
 
     def clickLoginButton(self):
         self.click_on_element(By.XPATH, HomePageLocators.signInButtonByXpath)
@@ -35,7 +38,6 @@ class HomePage(BaseSetup, WebDriverCustomClass):
         self.fill_element(By.ID, HomePageLocators.aliasInputTextByID, info_user['email'])
         self.click_on_element(By.ID, HomePageLocators.submitRegisterButtonByID)
 
-
     def search_product(self, searched_product):
         self.send_keys_to(By.ID, HomePageLocators.searchFieldByID, searched_product)
 
@@ -49,18 +51,25 @@ class HomePage(BaseSetup, WebDriverCustomClass):
         self.click_on_element(By.XPATH, HomePageLocators.dressesButtonByXpath)
 
     def addInCart(self):
-        for item in products['itens']:
+        for item in products_list['itens']:
             self.fill_element(By.ID, HomePageLocators.searchFieldByID, item)
             self.click_on_element(By.NAME, HomePageLocators.searchButtonByName)
             self.is_element_clickable(By.XPATH, HomePageLocators.productNameLinkTextByXpath)
             self.click_on_element(By.XPATH, HomePageLocators.productNameLinkTextByXpath)
             self.is_element_clickable(By.ID, HomePageLocators.addCartButtonByID)
+            self.product = self.getItemInCart()
+            self.product_dict[self.product.name] = self.product
             self.click_on_element(By.ID, HomePageLocators.addCartButtonByID)
             self.is_element_clickable(By.XPATH, HomePageLocators.checkoutButtonByXpath)
             self.click_on_element(By.XPATH, HomePageLocators.checkoutButtonByXpath)
-            time.sleep(10)
 
     def registerAction(self):
         self.clickLoginButton()
         self.loadRegister()
         self.fillFormRegister()
+
+    def getItemInCart(self):
+        self.product.name = self.find_element(By.XPATH, HomePageLocators.productTitleLabelByXpath).text
+        self.product.price = self.find_element(By.ID, HomePageLocators.productPriceLabelByID).text
+        self.product.qtd = self.find_element(By.ID, HomePageLocators.productQuantityLabelByID).get_attribute("value")
+        return self.product
