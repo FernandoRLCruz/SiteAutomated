@@ -90,3 +90,9 @@ class WebDriverCustomClass:
     def element_wait(self, by, value):
         WebDriverWait(self.driver, 15).until(
             EC.visibility_of_element_located(by, value))
+
+    def selectOnCombo(self, by, value, text):
+        element = self.find_element(by, value)
+        element.send_keys(text)
+
+

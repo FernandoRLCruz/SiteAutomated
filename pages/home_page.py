@@ -6,13 +6,13 @@ from selenium.webdriver.common.by import By
 from base.base_setup import BaseSetup
 from base.webdriver_custom_class import WebDriverCustomClass
 from page_model.home_page import HomePageLocators
-from utilities.data import info_user
+from utilities.data import info_user, products
 
 
 class HomePage(BaseSetup, WebDriverCustomClass):
 
     def clickLoginButton(self):
-        self.click_on_element(By.CLASS_NAME, HomePageLocators.loginButtonByClassName)
+        self.click_on_element(By.XPATH, HomePageLocators.signInButtonByXpath)
 
     def loadRegister(self):
         self.is_element_clickable(By.ID, HomePageLocators.emailRegisterInputTextByID)
@@ -25,17 +25,15 @@ class HomePage(BaseSetup, WebDriverCustomClass):
         self.click_on_element(By.ID, HomePageLocators.genderMaleInputRadioByID)
         self.fill_element(By.ID, HomePageLocators.customerFirstNameInputTextByID, info_user['firstName'])
         self.fill_element(By.ID, HomePageLocators.customerLastNameInputTextByID, info_user['lastName'])
-        self.fill_element(self.password, info_user['password'])
-        assert info_user['firstName'] in self.fName.get_attribute('value')
-        assert info_user['lastName'] in self.lName.get_attribute('value')
-        fillelement(self.address, info_user['address'])
-        fillelement(self.city, info_user['city'])
-        selectOnCombo(self.state, info_user['state'])
-        fillelement(self.zipcode, info_user['zipcode'])
-        selectOnCombo(self.country, info_user['country'])
-        fillelement(self.phone, info_user['phone'])
-        fillelement(self.alias, info_user['email'])
-        self.submitAcc.click()
+        self.fill_element(By.ID, HomePageLocators.passwordInputRadioByID, info_user['password'])
+        self.fill_element(By.ID, HomePageLocators.addressInputTextByID, info_user['address'])
+        self.fill_element(By.ID, HomePageLocators.cityInputTextByID, info_user['city'])
+        self.selectOnCombo(By.ID, HomePageLocators.stateSelectByID, info_user['state'])
+        self.fill_element(By.ID, HomePageLocators.zipcodeInputTextByID, info_user['zipcode'])
+        self.selectOnCombo(By.ID, HomePageLocators.countrySelectByID, info_user['country'])
+        self.fill_element(By.ID, HomePageLocators.phoneInputTextByID, info_user['phone'])
+        self.fill_element(By.ID, HomePageLocators.aliasInputTextByID, info_user['email'])
+        self.click_on_element(By.ID, HomePageLocators.submitRegisterButtonByID)
 
 
     def search_product(self, searched_product):
@@ -50,9 +48,19 @@ class HomePage(BaseSetup, WebDriverCustomClass):
     def dresses_button_click_on(self):
         self.click_on_element(By.XPATH, HomePageLocators.dressesButtonByXpath)
 
-    def dresses_summer_dresses_click_on(self):
-        pass
+    def addInCart(self):
+        for item in products['itens']:
+            self.fill_element(By.ID, HomePageLocators.searchFieldByID, item)
+            self.click_on_element(By.NAME, HomePageLocators.searchButtonByName)
+            self.is_element_clickable(By.XPATH, HomePageLocators.productNameLinkTextByXpath)
+            self.click_on_element(By.XPATH, HomePageLocators.productNameLinkTextByXpath)
+            self.is_element_clickable(By.ID, HomePageLocators.addCartButtonByID)
+            self.click_on_element(By.ID, HomePageLocators.addCartButtonByID)
+            self.is_element_clickable(By.XPATH, HomePageLocators.checkoutButtonByXpath)
+            self.click_on_element(By.XPATH, HomePageLocators.checkoutButtonByXpath)
+            time.sleep(10)
 
     def registerAction(self):
         self.clickLoginButton()
         self.loadRegister()
+        self.fillFormRegister()

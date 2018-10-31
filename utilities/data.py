@@ -11,7 +11,21 @@ info_user = {
     'state': 'Florida',
     'country': 'United States',
     }
-favorite_products = {
-    'itens': ['Faded Short Sleeve T-shirts', 'Printed Dress']
+
+info_user_logged = {
+    'firstName': 'Renato',
+    'lastName': 'Araujo',
+    'gender': 'male',
+    'email': 'fernando@teste.com0',
+    'phone': '81996873479',
+    'password': 'oipopo',
+    'address': 'Rua Amabai, 346',
+    'zipcode': '51020',
+    'city': 'Recife',
+    'state': 'Florida',
+    'country': 'United States',
+    }
+products = {
+    'itens': ['Printed Dress']
 }
 
