@@ -26,6 +26,6 @@ info_user_logged = {
     'country': 'United States',
     }
 products_list = {
-    'itens': ['Printed Dress', 'Faded Short Sleeve']
+    'itens': ['Printed Dress']
 }
 

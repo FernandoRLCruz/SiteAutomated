@@ -31,17 +31,3 @@ class HomePageLocators:
     productPriceLabelByID = "our_price_display"
 
 
-    '''
-    keepShopButtonByXpath = "//span[contains(@title,'Continue shopping')]"
-    closeAdd = PageElement(xpath='//*[@id="center_column"]/p[2]/a[1]')
-    card = PageElement(xpath='//*[@id="header"]/div[3]/div/div/div[3]/div/a')
-    sumary = PageElement(xpath='//*[@id="center_column"]/p[2]/a[1]')
-    confirmAddress = PageElement(name='processAddress')
-    confirmShip = PageElement(name='processCarrier')
-    termAgree = PageElement(id_='cgv')
-    payByBank = PageElement(class_name='payment_module')
-    confirmOrder = PageElement(xpath='//*[@id="cart_navigation"]/button')
-
-    iconCart = PageElement(xpath='//*[@id="header"]/div[3]/div/div/div[3]/div/a')
-    close = PageElement(class_name='cross')
-    '''

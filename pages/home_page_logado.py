@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from base.base_setup import BaseSetup
 from base.webdriver_custom_class import WebDriverCustomClass
-from page_model.home_page_logado import HomeLogadoPageLocators
+from page_model.home_page_logado_model import HomeLogadoPageLocators
 from utilities.data import info_user
 
 

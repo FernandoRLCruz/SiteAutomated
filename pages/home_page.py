@@ -1,13 +1,12 @@
-import time
 from random import randint
 
 from selenium.webdriver.common.by import By
 
 from base.base_setup import BaseSetup
 from base.webdriver_custom_class import WebDriverCustomClass
-from page_model.home_page import HomePageLocators
+from page_model.home_page_model import HomePageLocators
 from utilities.data import info_user, products_list
-from utilities.product import Product
+from base.product import Product
 
 
 class HomePage(BaseSetup, WebDriverCustomClass):
@@ -55,13 +54,16 @@ class HomePage(BaseSetup, WebDriverCustomClass):
             self.fill_element(By.ID, HomePageLocators.searchFieldByID, item)
             self.click_on_element(By.NAME, HomePageLocators.searchButtonByName)
             self.is_element_clickable(By.XPATH, HomePageLocators.productNameLinkTextByXpath)
-            self.click_on_element(By.XPATH, HomePageLocators.productNameLinkTextByXpath)
+            self.productElements = self.find_elements(By.XPATH, HomePageLocators.productNameLinkTextByXpath)
+            self.productElement = self.findProductByName(item)
+            self.productElement.click()
             self.is_element_clickable(By.ID, HomePageLocators.addCartButtonByID)
             self.product = self.getItemInCart()
             self.product_dict[self.product.name] = self.product
             self.click_on_element(By.ID, HomePageLocators.addCartButtonByID)
             self.is_element_clickable(By.XPATH, HomePageLocators.checkoutButtonByXpath)
             self.click_on_element(By.XPATH, HomePageLocators.checkoutButtonByXpath)
+            self.cartValue = self.calculateCart()
 
     def registerAction(self):
         self.clickLoginButton()
@@ -73,3 +75,12 @@ class HomePage(BaseSetup, WebDriverCustomClass):
         self.product.price = self.find_element(By.ID, HomePageLocators.productPriceLabelByID).text
         self.product.qtd = self.find_element(By.ID, HomePageLocators.productQuantityLabelByID).get_attribute("value")
         return self.product
+
+    def findProductByName(self, item):
+        for productItem in self.productElements:
+            if item in productItem.text:
+                return productItem
+
+    def calculateCart(self):
+        for productItem in self.product_dict:
+            return int(self.product_dict[productItem].qtd) * int(self.product_dict[productItem].price[1:3])

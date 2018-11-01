@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 from base.base_setup import BaseSetup
 from base.webdriver_custom_class import WebDriverCustomClass
-from page_model.shoppingCart_page import ShoppingCartPageLocators
+from page_model.shoppingCart_page_model import ShoppingCartPageLocators
 
 
 class ShoppingCartPage(BaseSetup, WebDriverCustomClass):

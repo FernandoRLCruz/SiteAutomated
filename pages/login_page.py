@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 
 from base.base_setup import BaseSetup
 from base.webdriver_custom_class import WebDriverCustomClass
-from page_model.login_page import LoginPageLocators
+from page_model.login_page_model import LoginPageLocators
 from utilities.data import info_user_logged
 
 

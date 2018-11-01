@@ -4,7 +4,7 @@ from base.base_setup import BaseSetup
 from base.webdriver_custom_class import WebDriverCustomClass
 from utilities.helpers import wait_and_click
 import time
-from page_model.dresses_page import DressesPageLocators
+from page_model.dresses_page_model import DressesPageLocators
 
 
 class DressesPage(BaseSetup, WebDriverCustomClass):
