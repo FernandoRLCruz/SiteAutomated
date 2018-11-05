@@ -6,7 +6,7 @@ import selenium.webdriver.support.ui as ui
 from selenium import webdriver
 
 
-class WebDriverCustomClass:
+class GenericMethodsClass:
 
     def __init__(self, driver):
         self.driver = driver
@@ -33,7 +33,7 @@ class WebDriverCustomClass:
             hover = ActionChains(self.driver)
             hover.move_to_element(element).perform()
         except:
-            raise Exception("Elemento {0} não está visivel!".format(value))
+            raise Exception("Element {0} is not visible!".format(value))
 
     def hover_over_an_element(self, element, by, value):
         try:
@@ -42,41 +42,28 @@ class WebDriverCustomClass:
             hover.move_to_element(element).perform()
             self.is_element_visible(element).click()
         except:
-            raise Exception("Elemento {0} não está visivel!".format(element))
-
-    # retirar?
-    def hover_over_first_element_click_on_second(self, *args):
-        locator_1, locator_type_1, locator_2, locator_type_2, locator_3, locator_type_3 = args
-        locator_type_1.lower()
-        locator_type_2.lower()
-        locator_type_3.lower()
-        main_button = self.get_element(locator_1, locator_type_1)
-        second_button = self.get_element(locator_2, locator_type_2)
-        third_element = self.get_element(locator_3, locator_type_3)
-        hover = ActionChains(self.driver)
-        hover.move_to_element(main_button).pause(1).move_to_element(second_button).pause(1).perform()
-        third_element.click()
+            raise Exception("Element {0} is not visible!".format(element))
 
     def scroll_into_view(self, by, value):
         try:
             element = self.find_element(by, value)
             self.driver.execute_script("arguments[0].scrollIntoView();", element)
         except:
-            raise Exception("Elemento {0} não está visivel!".format(element))
+            raise Exception("Element {0} is not visible!".format(element))
 
     def is_element_visible(self, by, value):
         try:
             WebDriverWait(self.driver, 20).until(EC.visibility_of_element_located((by, value)))
             return True
         except:
-            raise Exception("Elemento {0} não está visivel!".format(value))
+            raise Exception("Element {0} is not visible!".format(value))
 
     def is_element_clickable(self, by, value):
         try:
             WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((by, value)))
             return True
         except:
-            raise Exception("Elemento {0} não está visivel!".format(value))
+            raise Exception("Element {0} is not visible!".format(value))
 
     def click_on_returned_element(self, by, value):
         element = self.find_element(by, value)

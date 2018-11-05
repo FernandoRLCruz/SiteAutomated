@@ -1,19 +1,16 @@
 from selenium.webdriver.common.by import By
 
 from base.base_setup import BaseSetup
-from base.webdriver_custom_class import WebDriverCustomClass
+from base.generic_methods import GenericMethodsClass
 from utilities.helpers import wait_and_click
 import time
 from page_model.dresses_page_model import DressesPageLocators
 
 
-class DressesPage(BaseSetup, WebDriverCustomClass):
+class DressesPage(BaseSetup, GenericMethodsClass):
 
 
-    #def summer_dresses_image_click_on(self):
-     #   self.hover_over_first_element_click_on_second(dressesButtonByXpath,
-      #                                                home_page.get("dressesButtonActivateByXpath"), "xpath",
-       #                                               home_page.get("dressesButtonCassualDressesByXpath"), "xpath")
+
 
     def add_to_the_cart_all_products_in_the_category(self):
         counter = 1

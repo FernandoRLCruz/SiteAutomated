@@ -5,15 +5,15 @@ from pages.login_page import LoginPage
 import unittest
 
 
-class RegisterCreateTest(BaseSetup, unittest.TestCase):
+class LoggingInTest(BaseSetup, unittest.TestCase):
 
     def setUp(self):
-        super(RegisterCreateTest, self).setUp()
+        super(LoggingInTest, self).setUp()
         self.home_page = HomePage(self.driver)
         self.home_page_logado = HomeLogadoPage(self.driver)
         self.login_page = LoginPage(self.driver)
 
-    def test_create_register(self):
+    def test_logging_in(self):
         self.home_page.clickLoginButton()
         self.login_page.loginSuccessful()
         result = self.home_page_logado.getTextLabel()

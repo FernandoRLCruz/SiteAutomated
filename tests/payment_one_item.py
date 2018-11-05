@@ -17,7 +17,7 @@ class PaymentOneItemTest(BaseSetup, unittest.TestCase):
         self.order_page = OrderPage(self.driver)
 
 
-    def test_create_register(self):
+    def test_payment_one_item(self):
         self.home_page.clickLoginButton()
         self.login_page.loginSuccessful()
         self.home_page.addInCart()

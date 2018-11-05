@@ -1,12 +1,12 @@
 from selenium.webdriver.common.by import By
 
 from base.base_setup import BaseSetup
-from base.webdriver_custom_class import WebDriverCustomClass
+from base.generic_methods import GenericMethodsClass
 from page_model.login_page_model import LoginPageLocators
 from utilities.data import info_user_logged
 
 
-class LoginPage(BaseSetup, WebDriverCustomClass):
+class LoginPage(BaseSetup, GenericMethodsClass):
 
     def fillLogin(self):
         self.is_element_clickable(By.ID, LoginPageLocators.emailRegisterInputTextByID)

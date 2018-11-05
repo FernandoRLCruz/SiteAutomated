@@ -3,13 +3,13 @@ from random import randint
 from selenium.webdriver.common.by import By
 
 from base.base_setup import BaseSetup
-from base.webdriver_custom_class import WebDriverCustomClass
+from base.generic_methods import GenericMethodsClass
 from page_model.home_page_model import HomePageLocators
 from utilities.data import info_user, products_list
 from base.product import Product
 
 
-class HomePage(BaseSetup, WebDriverCustomClass):
+class HomePage(BaseSetup, GenericMethodsClass):
     product = Product
     product_dict = dict()
 

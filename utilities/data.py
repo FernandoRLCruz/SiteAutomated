@@ -1,6 +1,6 @@
 info_user = {
-    'firstName': 'Renato',
-    'lastName': 'Araujo',
+    'firstName': 'Fernando',
+    'lastName': 'Cruz',
     'gender': 'male',
     'email': 'fernando@teste.com',
     'phone': '81996873479',
@@ -13,8 +13,8 @@ info_user = {
     }
 
 info_user_logged = {
-    'firstName': 'Renato',
-    'lastName': 'Araujo',
+    'firstName': 'Wand',
+    'lastName': 'Cruz',
     'gender': 'male',
     'email': 'fernando@teste.com0',
     'phone': '81996873479',

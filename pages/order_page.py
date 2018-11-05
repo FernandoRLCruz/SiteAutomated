@@ -4,14 +4,14 @@ from random import randint
 from selenium.webdriver.common.by import By
 
 from base.base_setup import BaseSetup
-from base.webdriver_custom_class import WebDriverCustomClass
+from base.generic_methods import GenericMethodsClass
 from page_model.home_page_model import HomePageLocators
 from page_model.order_page_model import OrderPageLocators
 from utilities.data import info_user, products_list
 from base.product import Product
 
 
-class OrderPage(BaseSetup, WebDriverCustomClass):
+class OrderPage(BaseSetup, GenericMethodsClass):
 
     def clickProceedCheckoutSummary(self):
         self.is_element_visible(By.XPATH, OrderPageLocators.proceedCheckoutSummaryButtonByXpath)
